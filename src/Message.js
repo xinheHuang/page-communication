@@ -1,24 +1,40 @@
 /**
- * Created by Xinhe on 2017/7/22.
+ * Created by xinhe on 2017/7/24.
  */
-function Message(sender,receiver,payload){
-    this.sender=sender;
-    this.receiver=receiver;
-    this.payload=payload;
-    this.time=new Date().getTime();
-}
-Message.prototype.getTime=function(){
-    return this.time;
-}
+(function (PageCommunication) {
+    var Message = function (sender, receiver, payload) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.payload = payload;
+        this.sendAll = false;
+        this.time = new Date().getTime();
 
-Message.prototype.getSender=function(){
-    return this.sender;
-}
+    }
 
-Message.prototype.getReceiver=function(){
-    return this.receiver;
-}
+    Message.prototype.setSendAll = function (sendAll) {
+        this.sendAll = sendAll;
+        return this;
+    }
 
-Message.prototype.getPayload=function(){
-    return this.getPayload;
-}
+
+    Message.prototype.getSendAll = function () {
+        return this.sendAll;
+    }
+
+
+    Message.prototype.getTime = function () {
+        return this.time;
+    }
+
+    Message.prototype.getSender = function () {
+        return this.sender;
+    }
+
+    Message.prototype.getPayload = function () {
+        return this.payload;
+    }
+    Message.prototype.getReceiver=function(){
+        return this.receiver;
+    }
+    PageCommunication.Message = Message;
+})(window.PageCommunication = window.PageCommunication || {})
